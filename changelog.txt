@@ -1,0 +1,43 @@
+﻿CHANGELOG mod_clm_termine ab 1.0.0
+------------
+
+Legend:
+* -> Security Fix
+# -> Bug Fix
+$ -> Language fix or change
++ -> Addition
+^ -> Change
+% -> Performance Fix
+- -> Removed
+! -> Note
+
+- - - - - 1.2.5 - [xx-xx-2015] - - - - - - - - - - - - - - - - - - - -
+# Datum nur einmal pro Kalendertag anzeigen
+
+- - - - - 1.2.4 - [31-01-2015] - - - - - - - - - - - - - - - - - - - -
+^ Änderung der Pfeile in der Kalenderansicht
+# Ausweis der lezten Tage des Vormonats in der Kalenderansicht
+
+- - - - - 1.2.3 - [23-01-2015] - - - - - - - - - - - - - - - - - - - -
+^ Konfigurationsmöglichkeiten in "Erweitert" vergrößert
+
+- - - - - 1.2.2 - [22-01-2015] - - - - - - - - - - - - - - - - - - - -
+# Error bei zweifacher Verwendung auf einer Seite
+# Mini-Codekorrektur bzgl. runden->runden
+
+- - - - - 1.2.1 - [25-05-2014] - - - - - - - - - - - - - - - - - - - -
+^ PHP 4.x Unterstützung enfernt -> Joomla 3.2 Support
+
+- - - - - 1.2.0 - [11-03-2014] - - - - - - - - - - - - - - - - - - - -
+# Mini-Codekorrektur
+# Sortierung nächste Termine
+
+- - - - - 1.1.2 - [07-05-2013] - - - - - - - - - - - - - - - - - - - -
+# Entfernen der Saisonangaben bei Event (Fred) 
+^ undefinierte Variablen verhindern (Fred) 
+
+- - - - - 1.1.1 - [30-08-2012] - - - - - - - - - - - - - - - - - - - -
++ Darstellung mehrtägiger Termine und mehrere Termine am Tag
++ Navigation in die Vergangenheit
+^ Anzeige heute verändert
+# Verlinkung von Ligen mit 2 Durchgängen
