@@ -1,15 +1,15 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2015 CLM Team  All rights reserved
+ * @Copyright (C) 2011-2016 CLM Team  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
  * @author Fjodor Schäfer
  * @email ich@vonfio.de
 */
 
- 
 defined('_JEXEC') or die('Restricted access'); 
+jimport( 'joomla.html.parameter' );
 
 $liga	= JRequest::getVar( 'liga');
 $runde	= JRequest::getVar( 'runde');
@@ -17,6 +17,7 @@ $view	= JRequest::getVar( 'view' );
 $dg		= JRequest::getVar( 'dg' );
 $itemid	= JRequest::getVar( 'Itemid','' );
 $start	= JRequest::getVar( 'start','1');
+$categoryid	= JRequest::getInt( 'categoryid',0);
  
 ?>
 <style type="text/css">
@@ -41,7 +42,14 @@ if ($par_liste == 0) {
  
 <?php 	
 
-$arrWochentag = array( "Monday" => "Montag", "Tuesday" => "Dienstag", "Wednesday" => "Mittwoch", "Thursday" => "Donnerstag", "Friday" => "Freitag", "Saturday" => "Samstag", "Sunday" => "Sonntag", );
+$arrWochentag = array( 
+		"Monday" => JText::_('MOD_CLM_TERMINE_T01'), 
+		"Tuesday" => JText::_('MOD_CLM_TERMINE_T02'), 
+		"Wednesday" => JText::_('MOD_CLM_TERMINE_T03'), 
+		"Thursday" => JText::_('MOD_CLM_TERMINE_T04'), 
+		"Friday" => JText::_('MOD_CLM_TERMINE_T05'), 
+		"Saturday" => JText::_('MOD_CLM_TERMINE_T06'), 
+		"Sunday" => JText::_('MOD_CLM_TERMINE_T07') );
 $count = 0; 
 if ($start == '1') $start = date("Y-m-d");
 for ($t = 0; $t < $par_anzahl; $t++) {
@@ -50,7 +58,7 @@ for ($t = 0; $t < $par_anzahl; $t++) {
  
 		// Veranstaltung verlinken
 		if ($runden[$t]->source == 'termin') { 
-			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail"; 
+			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail&amp;categoryid=".$categoryid; 
 		} elseif ($runden[$t]->ligarunde != 0) { 
 			//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=" . $runden[$t]->durchgang;
 			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->runden))
@@ -171,21 +179,30 @@ if ($start != '1') {
 }
 
 $arrMonth = array(
-    "January" => "Januar",
-    "February" => "Februar",
-    "March" => "M&auml;rz",
-    "April" => "April",
-    "May" => "Mai",
-    "June" => "Juni",
-    "July" => "Juli",
-    "August" => "August",
-    "September" => "September",
-    "October" => "Oktober",
-    "November" => "November",
-    "December" => "Dezember"
+    "January" => JText::_('MOD_CLM_TERMINE_M01'),
+    "February" => JText::_('MOD_CLM_TERMINE_M02'),
+    "March" => JText::_('MOD_CLM_TERMINE_M03'),
+    "April" => JText::_('MOD_CLM_TERMINE_M04'),
+    "May" => JText::_('MOD_CLM_TERMINE_M05'),
+    "June" => JText::_('MOD_CLM_TERMINE_M06'),
+    "July" => JText::_('MOD_CLM_TERMINE_M07'),
+    "August" => JText::_('MOD_CLM_TERMINE_M08'),
+    "September" => JText::_('MOD_CLM_TERMINE_M09'),
+    "October" => JText::_('MOD_CLM_TERMINE_M10'),
+    "November" => JText::_('MOD_CLM_TERMINE_M11'),
+    "December" => JText::_('MOD_CLM_TERMINE_M12')
 );
     
-$headline = array('Mo','Di','Mi','Do','Fr','Sa','So');
+//$headline = array('Mo','Di','Mi','Do','Fr','Sa','So');
+$headline = array( 
+		JText::_('MOD_CLM_TERMINE_K01'), 
+		JText::_('MOD_CLM_TERMINE_K02'), 
+		JText::_('MOD_CLM_TERMINE_K03'), 
+		JText::_('MOD_CLM_TERMINE_K04'), 
+		JText::_('MOD_CLM_TERMINE_K05'), 
+		JText::_('MOD_CLM_TERMINE_K06'), 
+		JText::_('MOD_CLM_TERMINE_K07') );
+
 $linkname_tl = "index.php?option=com_clm&amp;view=termine&amp;Itemid=1"; 
 $htext = $arrMonth[date('F',$date)].' '.date('Y',$date);
 

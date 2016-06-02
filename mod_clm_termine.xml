@@ -2,20 +2,13 @@
 <extension type="module" version="1.7.0" client="site" method="upgrade">
 	<name>CLM Modul Termine</name>
 	<author>Fjodor Schaefer</author>
-	<creationDate>18.04.2015</creationDate>
-	<copyright>(C) 2011-2015 CLM Projekt  All rights reserved.</copyright>
+	<creationDate>26.05.2016</creationDate>
+	<copyright>(C) 2011-2016 CLM Projekt  All rights reserved.</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>ich@vonfio.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>3.2.4a</version>
-	<description>
-		<![CDATA[
-			 <h3>Chess League Manager : Termin Modul</h3>
-			 <p>Modul, welches die kommenden Termine anzeigt.</p>
-			 <p><a target="_blank" href="http://www.chessleaguemanager.de">CLM Projekt Homepage</a></p>
-			 <p>&copy; Fjodor Sch&auml;fer [<a target="_blank" href="http://www.vonfio.de">www.vonfio.de</a>]</p>
-			 ]]>
-		 </description>
+	<version>3.3.0</version>
+	<description>MOD_CLM_TERMINE_XML_DESCRIPTION</description>
 
 	<files>
 		<filename module="mod_clm_termine">mod_clm_termine.php</filename>
@@ -24,34 +17,45 @@
 		<filename>index.html</filename>
 		<filename>helper.php</filename>
 		<folder>tmpl/</folder>
+		<folder>language/</folder>
 	</files>
 	
+	<languages folder="language">
+		<language tag="de-DE">de-DE/de-DE.mod_clm_termine.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.mod_clm_termine.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_clm_termine.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_clm_termine.ini</language>
+	</languages>
+		
 	<config><fields name="params"><fieldset name="basic" label="basic">
-		<field name="liste" type="list" default="1" label="Style">
-			<option value="0">Liste</option>
-			<option value="1">Kalenderansicht *Beta*</option>
+		<field name="liste" type="list" default="1" label="MOD_CLM_TERMINE_STYLE_LABEL" description="MOD_CLM_TERMINE_STYLE_DESC">
+			<option value="0">MOD_CLM_TERMINE_STYLE_0</option>
+			<option value="1">MOD_CLM_TERMINE_STYLE_1</option>
+		</field>
+		<field name="categoryid" type="sql" default="0" label="MOD_CLM_TERMINE_CATEGORY_LABEL" description="MOD_CLM_TERMINE_CATEGORY_DESC" query="SELECT id AS value, name AS categoryid FROM #__clm_categories ORDER BY ordering">
+			<option value="0">MOD_CLM_TERMINE_CATEGORY_SELECT</option>
 		</field>
 		<param type="spacer" />
-		<field name="anzahl" type="text" default="5" label="Anzahl" />
+		<field name="anzahl" type="text" default="5" label="MOD_CLM_TERMINE_COUNT_LABEL" />
 		<field type="spacer" />
-		<field name="datum" type="radio" default="1" label="Datum">
+		<field name="datum" type="radio" default="1" label="MOD_CLM_TERMINE_DATE_LABEL">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
-		<field name="datumlink" type="radio" default="0" label="Datum verlinken">
+		<field name="datumlink" type="radio" default="0" label="MOD_CLM_TERMINE_DATELINK_LABEL">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
 		<field type="spacer" />
-		<field name="terminlink" type="radio" default="1" label="Ereignis verlinken">
+		<field name="terminlink" type="radio" default="1" label="MOD_CLM_TERMINE_TERMINLINK_LABEL">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
-		<field name="name" type="radio" default="1" label="Terminname">
+		<field name="name" type="radio" default="1" label="MOD_CLM_TERMINE_NAME_LABEL">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
-		<field name="typ" type="radio" default="1" label="Liga / Turnier / Kategorie">
+		<field name="typ" type="radio" default="1" label="MOD_CLM_TERMINE_LEAGUE_LABEL">
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>

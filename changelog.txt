@@ -11,7 +11,11 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
-- - - - - 3.2.5 - [xx-xx-2015] - - - - - - - - - - - - - - - - - - - -
+- - - - - 3.3.0 - [26-05-2016] - - - - - - - - - - - - - - - - - - - -
++ Mehrsprachigkeit
++ neues Auswahlkriterium: CLM-Kategorie
+
+- - - - - 3.2.5 - [19-04-2015] - - - - - - - - - - - - - - - - - - - -
 # Datum nur einmal pro Kalendertag anzeigen
 
 - - - - - 3.2.4 - [18-04-2015] - - - - - - - - - - - - - - - - - - - -
