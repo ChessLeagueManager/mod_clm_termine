@@ -61,8 +61,8 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail&amp;categoryid=".$categoryid; 
 		} elseif ($runden[$t]->ligarunde != 0) { 
 			//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=" . $runden[$t]->durchgang;
-			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->runden))
-				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . ($runden[$t]->nr - $runden[$t]->runden) ."&amp;dg=2";
+			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->ligarunde))
+				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . ($runden[$t]->nr - $runden[$t]->ligarunde) ."&amp;dg=2";
 			else 
 				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=1";
 			
@@ -212,11 +212,11 @@ $htext = $arrMonth[date('F',$date)].' '.date('Y',$date);
 <center>
 <div class="kalender">
     <div class="kal_pagination">
-        <a href="?timestamp=<?php echo modCLMTermineHelper::yearBack($date); ?>" class="last">&laquo;</a> 
-        <a href="?timestamp=<?php echo modCLMTermineHelper::monthBack($date); ?>" class="last">&lsaquo;</a> 
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearBack($date); ?>" class="last">&laquo;</a> 
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::monthBack($date); ?>" class="last">&lsaquo;</a> 
         <span><a title="<?php echo 'Termine '.$htext; ?>" href="<?php echo $linkname_tl.'&amp;start='.date('Y-m',$date).'-01'; ?>"><?php echo $htext ?></a></span>
-        <a href="?timestamp=<?php echo modCLMTermineHelper::monthForward($date); ?>" class="next">&rsaquo;</a>
-        <a href="?timestamp=<?php echo modCLMTermineHelper::yearForward($date); ?>" class="next">&raquo;</a>
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::monthForward($date); ?>" class="next">&rsaquo;</a>
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearForward($date); ?>" class="next">&raquo;</a>
         <div class="clear"></div>  
     </div>
     <?php modCLMTermineHelper::getCalender($date,$headline,$event,$datum_stamp); ?>

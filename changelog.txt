@@ -11,6 +11,10 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 3.3.1 - [30-10-2016] - - - - - - - - - - - - - - - - - - - -
+# Installation nicht im Hauptpfad möglich
+# Link zu Detailinfo bei 2 Durchgängen in Terminliste
+
 - - - - - 3.3.0 - [26-05-2016] - - - - - - - - - - - - - - - - - - - -
 + Mehrsprachigkeit
 + neues Auswahlkriterium: CLM-Kategorie
