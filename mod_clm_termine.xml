@@ -2,12 +2,12 @@
 <extension type="module" version="1.7.0" client="site" method="upgrade">
 	<name>CLM Modul Termine</name>
 	<author>Fjodor Schaefer</author>
-	<creationDate>08.02.2015</creationDate>
-	<copyright>(C) 2011-2015 CLM Projekt  All rights reserved.</copyright>
+	<creationDate>07.11.2016</creationDate>
+	<copyright>(C) 2011-2016 CLM Projekt  All rights reserved.</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>ich@vonfio.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>1.2.4a</version>
+	<version>1.2.5</version>
 	<description>
 		<![CDATA[
 			 <h3>Chess League Manager : Termin Modul</h3>

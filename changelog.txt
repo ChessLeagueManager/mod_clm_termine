@@ -11,8 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
-- - - - - 1.2.5 - [xx-xx-2015] - - - - - - - - - - - - - - - - - - - -
+- - - - - 1.2.5 - [07-11-2015] - - - - - - - - - - - - - - - - - - - -
 # Datum nur einmal pro Kalendertag anzeigen
+# Link zu Detailinfo bei 2 Durchgängen in Terminliste
 
 - - - - - 1.2.4 - [31-01-2015] - - - - - - - - - - - - - - - - - - - -
 ^ Änderung der Pfeile in der Kalenderansicht
