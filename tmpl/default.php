@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2016 CLM Team  All rights reserved
+ * @Copyright (C) 2011-2017 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
  * @author Fjodor Schäfer
@@ -204,7 +204,7 @@ $headline = array(
 		JText::_('MOD_CLM_TERMINE_K07') );
 
 $linkname_tl = "index.php?option=com_clm&amp;view=termine&amp;Itemid=1"; 
-$htext = $arrMonth[date('F',$date)].' '.date('Y',$date);
+$htext = $arrMonth[date('F',$date)].' '.date('y',$date);
 
 ?>
 <?php // URI holen  $uri     = &JFactory::getUri();  
@@ -217,7 +217,7 @@ $htext = $arrMonth[date('F',$date)].' '.date('Y',$date);
         <span><a title="<?php echo 'Termine '.$htext; ?>" href="<?php echo $linkname_tl.'&amp;start='.date('Y-m',$date).'-01'; ?>"><?php echo $htext ?></a></span>
         <a href="index.php?timestamp=<?php echo modCLMTermineHelper::monthForward($date); ?>" class="next">&rsaquo;</a>
         <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearForward($date); ?>" class="next">&raquo;</a>
-        <div class="clear"></div>  
+        <div class="clear"></div>
     </div>
     <?php modCLMTermineHelper::getCalender($date,$headline,$event,$datum_stamp); ?>
     <div class="clear"></div>

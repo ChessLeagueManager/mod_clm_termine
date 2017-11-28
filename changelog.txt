@@ -11,6 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 3.3.2 - [05-06-2017] - - - - - - - - - - - - - - - - - - - -
+^ kleine Designanpassung Kalenderblatt
+
 - - - - - 3.3.1 - [30-10-2016] - - - - - - - - - - - - - - - - - - - -
 # Installation nicht im Hauptpfad möglich
 # Link zu Detailinfo bei 2 Durchgängen in Terminliste

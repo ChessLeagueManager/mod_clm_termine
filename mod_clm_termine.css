@@ -9,7 +9,7 @@ body {
 .kalender {
 	width:140px  !important;
 	border-color:#FFF;
-	padding: 3px;
+	/* padding: 3px; */
 }
 .kalender div.after,
 .kalender div.before{
@@ -42,13 +42,14 @@ body {
 }
 .kal_pagination {
 	text-align: center;
+    width: 140px;
 	line-height:20px;
 	font-weight: bold;
 	background-color:#DDDDDD;
 }
 .kal_pagination a {
     width:10px;
-    height:20x;
+    height:20px;
     float:left;
     color:white;
 	background-color:#DDDDDD;
@@ -56,7 +57,7 @@ body {
 .kal_pagination span a {
     display:block;
     float:left;
-    width: 98.5px;
+    width: 100px; /*98.5*/
 	color:black;
 	background-color:#DDDDDD;
 }
