@@ -1,16 +1,17 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2017 CLM Team.  All rights reserved
+ * @Copyright (C) 2011-2018 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
- * @author Fjodor Schäfer
+ * @author Fjodor SchÃ¤fer
  * @email ich@vonfio.de
 */
 
 defined('_JEXEC') or die('Restricted access'); 
 jimport( 'joomla.html.parameter' );
 
+/*
 $liga	= JRequest::getVar( 'liga');
 $runde	= JRequest::getVar( 'runde');
 $view	= JRequest::getVar( 'view' );
@@ -18,7 +19,54 @@ $dg		= JRequest::getVar( 'dg' );
 $itemid	= JRequest::getVar( 'Itemid','' );
 $start	= JRequest::getVar( 'start','1');
 $categoryid	= JRequest::getInt( 'categoryid',0);
- 
+*/
+$view	= JRequest::getVar( 'view','' );
+$saison	= JRequest::getVar( 'saison','');
+$liga	= JRequest::getVar( 'liga','');
+$turnier	= JRequest::getVar( 'turnier','');
+$dg		= JRequest::getVar( 'dg','' );
+$runde	= JRequest::getVar( 'runde','');
+$snr	= JRequest::getVar( 'snr','');
+$zps	= JRequest::getVar( 'zps','');
+$typeid	= JRequest::getVar( 'typeid','');
+$atyp	= JRequest::getVar( 'atyp','');
+$itemid	= JRequest::getVar( 'Itemid','' );
+$start	= JRequest::getVar( 'start','');
+$categoryid	= JRequest::getInt( 'categoryid','');
+$spRang	= JRequest::getInt( 'spRang','');
+$tlnr	= JRequest::getInt( 'tlnr','');
+$mglnr	= JRequest::getInt( 'mglnr','');
+$PKZ	= JRequest::getInt( 'PKZ','');
+$layout	= JRequest::getInt( 'layout','');
+$format	= JRequest::getInt( 'format','');
+$id	= JRequest::getInt( 'id','');
+$orderby	= JRequest::getInt( 'orderby','');
+
+$href_string = '';
+if ($view != '' AND $view != 'categories') $href_string .= '&view='.$view; 
+if ($saison != '') $href_string .= '&saison='.$saison; 
+if ($turnier != '') $href_string .= '&turnier='.$turnier; 
+if ($liga != '') $href_string .= '&liga='.$liga; 
+if ($dg != '') $href_string .= '&dg='.$dg; 
+if ($runde != '') $href_string .= '&runde='.$runde; 
+if ($snr != '') $href_string .= '&snr='.$snr; 
+if ($zps != '') $href_string .= '&zps='.$zps; 
+if ($typeid != '') $href_string .= '&typeid='.$typeid; 
+if ($atyp != '') $href_string .= '&atyp='.$atyp; 
+if ($start != '') $href_string .= '&start='.$start; 
+if ($categoryid != '') $href_string .= '&categoryid='.$categoryid; 
+if ($spRang != '') $href_string .= '&spRang='.$spRang; 
+if ($tlnr != '') $href_string .= '&tlnr='.$tlnr; 
+if ($mglnr != '') $href_string .= '&mglnr='.$mglnr; 
+if ($PKZ != '') $href_string .= '&PKZ='.$PKZ; 
+if ($layout != '') $href_string .= '&layout='.$layout; 
+if ($format != '') $href_string .= '&format='.$format; 
+if ($id != '') $href_string .= '&id='.$id; 
+if ($orderby != '') $href_string .= '&orderby='.$orderby; 
+
+if ($href_string == '&view=categories')  { 
+	echo "<br>href_string:".$href_string; die('hhh');
+	$href_string = ''; }
 ?>
 <style type="text/css">
 <?php 
@@ -51,14 +99,16 @@ $arrWochentag = array(
 		"Saturday" => JText::_('MOD_CLM_TERMINE_T06'), 
 		"Sunday" => JText::_('MOD_CLM_TERMINE_T07') );
 $count = 0; 
-if ($start == '1') $start = date("Y-m-d");
+if ($start == '' OR $start == '1') $start = date("Y-m-d");
 for ($t = 0; $t < $par_anzahl; $t++) {
 	if (!isset($runden[$t])) break;
 	if ($runden[$t]->datum >= $start) { 
  
 		// Veranstaltung verlinken
 		if ($runden[$t]->source == 'termin') { 
-			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail&amp;categoryid=".$categoryid; 
+			$categoryid_link = $categoryid;
+			if ($categoryid_link == '') $categoryid_link = '0';
+			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail&amp;categoryid=".$categoryid_link; 
 		} elseif ($runden[$t]->ligarunde != 0) { 
 			//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=" . $runden[$t]->durchgang;
 			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->ligarunde))
@@ -87,10 +137,10 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 						
     echo '<li>'; 
 	
-		if ($par_datum == 1) { // Parameter prüfen: Datum
+		if ($par_datum == 1) { // Parameter prÃ¼fen: Datum
 			if ((isset($datum[$t-1])) AND ($datum[$t] == $datum[$t-1]) AND (isset($enddatum[$t-1])) AND ($enddatum[$t] == $enddatum[$t-1])) { echo ''; }      //klkl
 				else { 
-					if ($par_datum_link == 1) { // Parameter prüfen: Datum verlinken
+					if ($par_datum_link == 1) { // Parameter prÃ¼fen: Datum verlinken
 						echo $datum_link;
 					} else {  
 						echo $arrWochentag[date("l",$datum[$t])]. ",&nbsp;" . $datum_arr[$t][2].".".$datum_arr[$t][1].".".$datum_arr[$t][0]; 
@@ -108,9 +158,9 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			}
 				if ($runden[$t]->starttime != '00:00:00') { echo "&nbsp;&nbsp;".substr($runden[$t]->starttime,0,5); } // Starttime 								
 				if (($par_name == 1) OR ($par_typ == 1) AND ($runden[$t]->typ <>'') ) { echo "&nbsp;&nbsp;"; }
-				if ($par_name == 1) { echo $runden[$t]->name ."\n"; } // Parameter prüfen: Terminname 				
+				if ($par_name == 1) { echo $runden[$t]->name ."\n"; } // Parameter prÃ¼fen: Terminname 				
 				if (($par_name == 1) AND ($par_typ == 1) AND ($runden[$t]->typ <>'') ) { echo "&nbsp;-&nbsp;"; }
-				if ($par_typ == 1) { echo $runden[$t]->typ ."\n"; }  // Parameter prüfen: Ort / Liga / Turnier
+				if ($par_typ == 1) { echo $runden[$t]->typ ."\n"; }  // Parameter prÃ¼fen: Ort / Liga / Turnier
 			if ($par_termin_link == 1 ) {
 				echo "</a>\n";
 			}
@@ -173,7 +223,7 @@ $event	= array_combine ($datum_stamp, $event_desc);
 
 if( isset($_REQUEST['timestamp'])) { $date = $_REQUEST['timestamp']; }
 else { $date = time(); }
-if ($start != '1') {
+if ($start != '' AND $start != '1') {
 	$start_arr = explode("-",$start);
     $date = mktime(0,0,0,$start_arr[1],$start_arr[2],$start_arr[0]);
 }
@@ -212,11 +262,11 @@ $htext = $arrMonth[date('F',$date)].' '.date('y',$date);
 <center>
 <div class="kalender">
     <div class="kal_pagination">
-        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearBack($date); ?>" class="last">&laquo;</a> 
-        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::monthBack($date); ?>" class="last">&lsaquo;</a> 
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearBack($date).$href_string; ?>" class="last">&laquo;</a> 
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::monthBack($date).$href_string; ?>" class="last">&lsaquo;</a> 
         <span><a title="<?php echo 'Termine '.$htext; ?>" href="<?php echo $linkname_tl.'&amp;start='.date('Y-m',$date).'-01'; ?>"><?php echo $htext ?></a></span>
-        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::monthForward($date); ?>" class="next">&rsaquo;</a>
-        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearForward($date); ?>" class="next">&raquo;</a>
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::monthForward($date).$href_string; ?>" class="next">&rsaquo;</a>
+        <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearForward($date).$href_string; ?>" class="next">&raquo;</a>
         <div class="clear"></div>
     </div>
     <?php modCLMTermineHelper::getCalender($date,$headline,$event,$datum_stamp); ?>
