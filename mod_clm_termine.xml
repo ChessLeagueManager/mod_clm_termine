@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="1.7.0" client="site" method="upgrade">
 	<name>CLM Modul Termine</name>
-	<author>Fjodor Schaefer</author>
-	<creationDate>02.09.2018</creationDate>
-	<copyright>(C) 2011-2018 CLM Projekt  All rights reserved.</copyright>
+	<author>CLM Team</author>
+	<creationDate>12.10.2021</creationDate>
+	<copyright>(C) 2011-2021 CLM Projekt  All rights reserved.</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>ich@vonfio.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>3.3.3</version>
+	<version>3.4.0</version>
 	<description>MOD_CLM_TERMINE_XML_DESCRIPTION</description>
 
 	<files>

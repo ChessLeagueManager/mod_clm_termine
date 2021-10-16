@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2018 CLM Team.  All rights reserved
+ * @Copyright (C) 2011-2021 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
  * @author Fjodor Schäfer
@@ -11,38 +11,46 @@
 defined('_JEXEC') or die('Restricted access'); 
 jimport( 'joomla.html.parameter' );
 
-/*
-$liga	= JRequest::getVar( 'liga');
-$runde	= JRequest::getVar( 'runde');
-$view	= JRequest::getVar( 'view' );
-$dg		= JRequest::getVar( 'dg' );
-$itemid	= JRequest::getVar( 'Itemid','' );
-$start	= JRequest::getVar( 'start','1');
-$categoryid	= JRequest::getInt( 'categoryid',0);
-*/
-$view	= JRequest::getVar( 'view','' );
-$saison	= JRequest::getVar( 'saison','');
-$liga	= JRequest::getVar( 'liga','');
-$turnier	= JRequest::getVar( 'turnier','');
-$dg		= JRequest::getVar( 'dg','' );
-$runde	= JRequest::getVar( 'runde','');
-$snr	= JRequest::getVar( 'snr','');
-$zps	= JRequest::getVar( 'zps','');
-$typeid	= JRequest::getVar( 'typeid','');
-$atyp	= JRequest::getVar( 'atyp','');
-$itemid	= JRequest::getVar( 'Itemid','' );
-$start	= JRequest::getVar( 'start','');
-$categoryid	= JRequest::getInt( 'categoryid','');
-$spRang	= JRequest::getInt( 'spRang','');
-$tlnr	= JRequest::getInt( 'tlnr','');
-$mglnr	= JRequest::getInt( 'mglnr','');
-$PKZ	= JRequest::getInt( 'PKZ','');
-$layout	= JRequest::getInt( 'layout','');
-$format	= JRequest::getInt( 'format','');
-$id	= JRequest::getInt( 'id','');
-$orderby	= JRequest::getInt( 'orderby','');
+$option	= clm_core::$load->request_string( 'option','' );
+if ($option == '') {
+    // URL zusammenstellen
+    $url = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI']; // $url enthält jetzt die komplette URL
+	$pcomponent = strpos($url,'/component/');
+	if ($pcomponent !== false) {
+		if (substr($url, $pcomponent + 10, 5) == '/clm/') 
+			$option = "com_clm";
+	}
+}
+$view	= clm_core::$load->request_string( 'view','' );
+$saison	= clm_core::$load->request_string( 'saison','');
+$liga	= clm_core::$load->request_string( 'liga','');
+$turnier	= clm_core::$load->request_int( 'turnier','');
+$dg		= clm_core::$load->request_string( 'dg','' );
+$runde	= clm_core::$load->request_string( 'runde','');
+$snr	= clm_core::$load->request_string( 'snr','');
+$zps	= clm_core::$load->request_string( 'zps','');
+$typeid	= clm_core::$load->request_string( 'typeid','');
+$atyp	= clm_core::$load->request_string( 'atyp','');
+$itemid	= clm_core::$load->request_string( 'Itemid','');
+$start	= clm_core::$load->request_string( 'start','');
+$categoryid	= clm_core::$load->request_string( 'categoryid','');
+$spRang	= clm_core::$load->request_string( 'spRang','');
+$tlnr	= clm_core::$load->request_string( 'tlnr','');
+$mglnr	= clm_core::$load->request_string( 'mglnr','');
+$PKZ	= clm_core::$load->request_string( 'PKZ','');
+$layout	= clm_core::$load->request_string( 'layout','');
+$format	= clm_core::$load->request_string( 'format','');
+$id	= clm_core::$load->request_string( 'id','');
+$orderby	= clm_core::$load->request_string( 'orderby','');
+$ext_view	= clm_core::$load->request_string( 'ext_view','');
+$source	= clm_core::$load->request_string( 'source','');
+
+//echo "<br>Itemid: $itemid ";
 
 $href_string = '';
+if ($option != '') $href_string .= '&option='.$option; 
 if ($view != '' AND $view != 'categories') $href_string .= '&view='.$view; 
 if ($saison != '') $href_string .= '&saison='.$saison; 
 if ($turnier != '') $href_string .= '&turnier='.$turnier; 
@@ -53,6 +61,7 @@ if ($snr != '') $href_string .= '&snr='.$snr;
 if ($zps != '') $href_string .= '&zps='.$zps; 
 if ($typeid != '') $href_string .= '&typeid='.$typeid; 
 if ($atyp != '') $href_string .= '&atyp='.$atyp; 
+if ($itemid != '') $href_string .= '&Itemid='.$itemid; 
 if ($start != '') $href_string .= '&start='.$start; 
 if ($categoryid != '') $href_string .= '&categoryid='.$categoryid; 
 if ($spRang != '') $href_string .= '&spRang='.$spRang; 
@@ -63,10 +72,14 @@ if ($layout != '') $href_string .= '&layout='.$layout;
 if ($format != '') $href_string .= '&format='.$format; 
 if ($id != '') $href_string .= '&id='.$id; 
 if ($orderby != '') $href_string .= '&orderby='.$orderby; 
+if ($ext_view != '') $href_string .= '&ext_view='.$ext_view; 
+if ($source != '') $href_string .= '&source='.$source; 
+//echo "<br>href: $href_string ";
 
 if ($href_string == '&view=categories')  { 
 	echo "<br>href_string:".$href_string; die('hhh');
 	$href_string = ''; }
+//$href_string = '';
 ?>
 <style type="text/css">
 <?php 
@@ -258,6 +271,7 @@ $htext = $arrMonth[date('F',$date)].' '.date('y',$date);
 
 ?>
 <?php // URI holen  $uri     = &JFactory::getUri();  
+//echo "<br>2href: $href_string ";
 // URL :  $uri->toString(); ?>
 <center>
 <div class="kalender">

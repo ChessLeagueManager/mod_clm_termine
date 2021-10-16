@@ -1,4 +1,10 @@
 <?php
+/**
+ * @ Chess League Manager (CLM) Termine Modul 
+ * @Copyright (C) 2008-2021 CLM Team.  All rights reserved
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link http://www.chessleaguemanager.de
+*/
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 class modCLMTermineHelper {
@@ -7,7 +13,8 @@ class modCLMTermineHelper {
 	$db = JFactory::getDBO();
 	$par_liste = $params->def('liste', 0);
 	$param['categoryid'] = $params->def('categoryid', 0);
-	JRequest::setVar( 'categoryid',$param['categoryid']);
+//	JRequest::setVar( 'categoryid',$param['categoryid']);
+	$_GET['categoryid'] = $param['categoryid'];
 	if ($par_liste == 0) {
 		$now = date("Y-m-d");
 	} else {

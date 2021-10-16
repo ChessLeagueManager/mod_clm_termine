@@ -11,6 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 3.4.0 - [12-10-2021] - - - - - - - - - - - - - - - - - - - -
+^ Code-Anpassung wegen Joomla 4
+
 - - - - - 3.3.3 - [02-09-2018] - - - - - - - - - - - - - - - - - - - -
 # Zeitsprünge (Links erweitert)
 
