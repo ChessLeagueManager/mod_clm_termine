@@ -11,6 +11,10 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 3.5.0 - [07-12-2021] - - - - - - - - - - - - - - - - - - - -
+# Ligen mit 3-4 Durchgängen
+^ Code-Anpassung wegen php 8
+
 - - - - - 3.4.0 - [12-10-2021] - - - - - - - - - - - - - - - - - - - -
 ^ Code-Anpassung wegen Joomla 4
 

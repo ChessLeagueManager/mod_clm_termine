@@ -79,22 +79,13 @@ if ($source != '') $href_string .= '&source='.$source;
 if ($href_string == '&view=categories')  { 
 	echo "<br>href_string:".$href_string; die('hhh');
 	$href_string = ''; }
-//$href_string = '';
-?>
-<style type="text/css">
-<?php 
 
 	$document = JFactory::getDocument();
 
-	$cssDir = JURI::base().'modules/mod_clm_termine';
-	//	$cssDir = JURI::base().'components'.DS.'com_clm'.DS.'includes';
+	$cssDir = JURI::base().'modules'.DS.'mod_clm_termine';
 
-	$document->addStyleSheet( $cssDir.'/mod_clm_termine.css', 'text/css', null, array() );
- 
-?>
-</style>
-
-<?php 
+	//$document->addStyleSheet( $cssDir.DS.'mod_clm_termine.css', 'text/css', null, array() );
+	$document->addStyleSheet( $cssDir.DS.'mod_clm_termine.css' );   // Joomla 4
 
 if ($par_liste == 0) { 
 ?>
@@ -124,11 +115,15 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail&amp;categoryid=".$categoryid_link; 
 		} elseif ($runden[$t]->ligarunde != 0) { 
 			//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=" . $runden[$t]->durchgang;
-			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->ligarunde))
-				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . ($runden[$t]->nr - $runden[$t]->ligarunde) ."&amp;dg=2";
-			else 
+			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->ligarunde)) {
+				if ($runden[$t]->nr > (3 * $runden[$t]->ligarunde)) $dg = 4;
+				elseif ($runden[$t]->nr > (2 * $runden[$t]->ligarunde)) $dg = 3;
+				else $dg = 2;
+				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id 
+				."&amp;runde=" . ($runden[$t]->nr - (($dg - 1) * $runden[$t]->ligarunde)) ."&amp;dg=". $dg;
+			} else { 
 				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=1";
-			
+			}
 		} else {
 			$linkname = "index.php?option=com_clm&amp;view=turnier_runde&amp;runde=" . $runden[$t]->nr . "&amp;turnier=" . $runden[$t]->typ_id; }
 		$linkname .= "&amp;start=". $runden[$t]->datum;             
@@ -185,7 +180,7 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 		
     echo "</li>\n";
 
-} 
+}
 } ?>
 
 </ul>
@@ -208,10 +203,15 @@ for ( $a = 0; $a < count ($runden); $a++ ) {
  		//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=". $runden[$a]->sid ."&amp;liga=".  $runden[$a]->typ_id ."&amp;runde=". $runden[$a]->nr ."&amp;dg=". $runden[$a]->durchgang; 
 //		if (($runden[$a]->durchgang > 1) AND ($runden[$a]->nr > $runden[$a]->runden))
 //			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . ($runden[$a]->nr - $runden[$a]->runden) ."&amp;dg=2";
-		if (($runden[$a]->durchgang > 1) AND ($runden[$a]->nr > $runden[$a]->ligarunde))
-			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . ($runden[$a]->nr - $runden[$a]->ligarunde) ."&amp;dg=2";
-		else 
+		if (($runden[$a]->durchgang > 1) AND ($runden[$a]->nr > $runden[$a]->ligarunde)) {
+			if ($runden[$a]->nr > (3 * $runden[$a]->ligarunde)) $dg = 4;
+			elseif ($runden[$a]->nr > (2 * $runden[$a]->ligarunde)) $dg = 3;
+			else $dg = 2;
+			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id 
+			."&amp;runde=" . ($runden[$a]->nr - (($dg - 1) * $runden[$a]->ligarunde)) ."&amp;dg=". $dg;
+		} else { 
 			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . $runden[$a]->nr ."&amp;dg=1";
+		}
  	} else {
  		$linkname = "index.php?option=com_clm&amp;view=turnier_runde&amp;runde=". $runden[$a]->nr ."&amp;turnier=". $runden[$a]->typ_id; 
 	}
@@ -270,9 +270,7 @@ $linkname_tl = "index.php?option=com_clm&amp;view=termine&amp;Itemid=1";
 $htext = $arrMonth[date('F',$date)].' '.date('y',$date);
 
 ?>
-<?php // URI holen  $uri     = &JFactory::getUri();  
-//echo "<br>2href: $href_string ";
-// URL :  $uri->toString(); ?>
+
 <center>
 <div class="kalender">
     <div class="kal_pagination">
@@ -283,7 +281,7 @@ $htext = $arrMonth[date('F',$date)].' '.date('y',$date);
         <a href="index.php?timestamp=<?php echo modCLMTermineHelper::yearForward($date).$href_string; ?>" class="next">&raquo;</a>
         <div class="clear"></div>
     </div>
-    <?php modCLMTermineHelper::getCalender($date,$headline,$event,$datum_stamp); ?>
+    <?php modCLMTermineHelper::getCalender($date,$event,$datum_stamp,$headline); ?>
     <div class="clear"></div>
 </div>
 </center>

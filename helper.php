@@ -73,7 +73,7 @@ class modCLMTermineHelper {
 	public static function yearForward($timestamp) {
 		return mktime(0, 0, 0, date("m", $timestamp), date("d", $timestamp), date("Y", $timestamp) + 1);
 	}
-	public static function getCalender($date, $headline = array('Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'), $event, $datum_stamp) {
+	public static function getCalender($date, $event, $datum_stamp, $headline = array('Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So')) {
 		$sum_days = date('t', $date);
 		$month = date('m',$date);
 		if ($month == "01") {
