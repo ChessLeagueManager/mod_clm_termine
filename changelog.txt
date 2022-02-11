@@ -11,6 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 3.5.1 - [06-02-2022] - - - - - - - - - - - - - - - - - - - -
++ Liste auch scrollbar möglich
+
 - - - - - 3.5.0 - [07-12-2021] - - - - - - - - - - - - - - - - - - - -
 # Ligen mit 3-4 Durchgängen
 ^ Code-Anpassung wegen php 8

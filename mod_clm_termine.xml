@@ -2,12 +2,12 @@
 <extension type="module" version="1.7.0" client="site" method="upgrade">
 	<name>CLM Modul Termine</name>
 	<author>CLM Team</author>
-	<creationDate>07.12.2021</creationDate>
-	<copyright>(C) 2011-2021 CLM Projekt  All rights reserved.</copyright>
+	<creationDate>06.02.2022</creationDate>
+	<copyright>(C) 2011-2022 CLM Projekt  All rights reserved.</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>ich@vonfio.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>3.5.0</version>
+	<version>3.5.1</version>
 	<description>MOD_CLM_TERMINE_XML_DESCRIPTION</description>
 
 	<files>
@@ -31,12 +31,14 @@
 		<field name="liste" type="list" default="1" label="MOD_CLM_TERMINE_STYLE_LABEL" description="MOD_CLM_TERMINE_STYLE_DESC">
 			<option value="0">MOD_CLM_TERMINE_STYLE_0</option>
 			<option value="1">MOD_CLM_TERMINE_STYLE_1</option>
+			<option value="2">MOD_CLM_TERMINE_STYLE_2</option>
 		</field>
 		<field name="categoryid" type="sql" default="0" label="MOD_CLM_TERMINE_CATEGORY_LABEL" description="MOD_CLM_TERMINE_CATEGORY_DESC" query="SELECT id AS value, name AS categoryid FROM #__clm_categories ORDER BY ordering">
 			<option value="0">MOD_CLM_TERMINE_CATEGORY_SELECT</option>
 		</field>
 		<param type="spacer" />
 		<field name="anzahl" type="text" default="5" label="MOD_CLM_TERMINE_COUNT_LABEL" />
+		<field name="height" type="text" default="200" label="MOD_CLM_TERMINE_HEIGHT_LABEL" />
 		<field type="spacer" />
 		<field name="datum" type="radio" default="1" label="MOD_CLM_TERMINE_DATE_LABEL">
 			<option value="0">JNO</option>

@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Termine Modul 
- * @Copyright (C) 2008-2021 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2022 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
 */
@@ -16,6 +16,7 @@ require_once (dirname(__FILE__).DS.'helper.php');
  
 $par_liste 			= $params->def('liste', 0);
 $par_anzahl 		= $params->def('anzahl', 5);
+$par_height 		= $params->def('height', 200);
 $par_datum			= $params->def('datum', 1);
 $par_datum_link 	= $params->def('datumlink', 1);
 $par_name 			= $params->def('name', 1);

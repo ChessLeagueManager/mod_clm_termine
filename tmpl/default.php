@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2021 CLM Team.  All rights reserved
+ * @Copyright (C) 2011-2022 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
  * @author Fjodor Schäfer
@@ -87,13 +87,15 @@ if ($href_string == '&view=categories')  {
 	//$document->addStyleSheet( $cssDir.DS.'mod_clm_termine.css', 'text/css', null, array() );
 	$document->addStyleSheet( $cssDir.DS.'mod_clm_termine.css' );   // Joomla 4
 
-if ($par_liste == 0) { 
-?>
- 
-<ul class="menu">
- 
-<?php 	
-
+if ($par_liste == 0 OR $par_liste == 2) { 
+	if ($par_liste == 0) {
+		?> <ul class="menu"> <?php 	
+	} else {
+		?> <div style="height:<?php echo $par_height; ?>px;overflow:auto;font-size:100%;">
+		   <table>
+		<?php $par_anzahl = count($runden); 	
+	}
+		
 $arrWochentag = array( 
 		"Monday" => JText::_('MOD_CLM_TERMINE_T01'), 
 		"Tuesday" => JText::_('MOD_CLM_TERMINE_T02'), 
@@ -104,6 +106,7 @@ $arrWochentag = array(
 		"Sunday" => JText::_('MOD_CLM_TERMINE_T07') );
 $count = 0; 
 if ($start == '' OR $start == '1') $start = date("Y-m-d");
+
 for ($t = 0; $t < $par_anzahl; $t++) {
 	if (!isset($runden[$t])) break;
 	if ($runden[$t]->datum >= $start) { 
@@ -143,7 +146,12 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 		}
 		$datum_link .= "</a>\n";
 						
-    echo '<li>'; 
+     
+	if ($par_liste == 0) {
+		echo '<li>'; 	
+	} else {
+		echo '<tr><td>'; 	
+	}
 	
 		if ($par_datum == 1) { // Parameter prüfen: Datum
 			if ((isset($datum[$t-1])) AND ($datum[$t] == $datum[$t-1]) AND (isset($enddatum[$t-1])) AND ($enddatum[$t] == $enddatum[$t-1])) { echo ''; }      //klkl
@@ -178,15 +186,24 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			echo '<br />'; 
 		}
 		
-    echo "</li>\n";
+	if ($par_liste == 0) {
+		echo '</li>'; 	
+	} else {
+		echo '</tr></td>'; 	
+	}
 
 }
-} ?>
+} 
 
-</ul>
+	if ($par_liste == 0) {
+		?></ul><?php 	
+	} else {
+		?></table>
+		  </div>
+		  <br>
+		<?php 	
+	}
 
-
-<?php
 } else { 
 
 // Termine als Timestamp zu einem Array machen
