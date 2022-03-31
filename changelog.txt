@@ -11,6 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 3.5.2 - [20-02-2022] - - - - - - - - - - - - - - - - - - - -
+^ Code-Anpassung J!4 Design Kalenderansicht
+
 - - - - - 3.5.1 - [06-02-2022] - - - - - - - - - - - - - - - - - - - -
 + Liste auch scrollbar möglich
 

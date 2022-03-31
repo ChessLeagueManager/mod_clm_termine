@@ -7,7 +7,6 @@
  * @author Fjodor Schäfer
  * @email ich@vonfio.de
 */
-
 defined('_JEXEC') or die('Restricted access'); 
 jimport( 'joomla.html.parameter' );
 
@@ -251,7 +250,8 @@ array_multisort ($datum_stamp, $event_desc);
 // Mehrdimensionaler Array mit allen Information. Das Timestamp ist der Key
 $event	= array_combine ($datum_stamp, $event_desc);
 
-if( isset($_REQUEST['timestamp'])) { $date = $_REQUEST['timestamp']; }
+//if( isset($_REQUEST['timestamp'])) { $date = $_REQUEST['timestamp']; }
+if( isset($_REQUEST['timestamp'])) { $date = $_REQUEST['timestamp']; $start = ''; }
 else { $date = time(); }
 if ($start != '' AND $start != '1') {
 	$start_arr = explode("-",$start);

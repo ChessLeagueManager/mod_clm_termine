@@ -1,3 +1,9 @@
+/**
+ * @ Chess League Manager (CLM) Component 
+ * @Copyright (C) 2011-2022 CLM Team.  All rights reserved
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link http://www.chessleaguemanager.de
+*/
 
 @charset "utf-8";
 /* CSS Document */
@@ -7,7 +13,7 @@ body {
     font-size:12px;
 }
 .kalender {
-	width:140px  !important;
+	width:168px  !important;
 	border-color:#FFF;
 	/* padding: 3px; */
 }
@@ -17,39 +23,50 @@ body {
 }
 .kalender .tag {
     float:left;
-    width:20px  !important;
-    height:20px  !important;
-    line-height: 20px;
+    width:24px  !important;
+    height:19px  !important;
+	padding: 0px !important;
+/*    line-height: 12px; */
+/*	front-size: 100% !important; */
+/*    body-line-height: 5px; */
     text-align: center;
 }
 .kalender  .tag.kal_top {
 	background-color:#DDDDDD;
 	font-weight: bold;
 }
-.tag.heute {
+.kalender  .tag.heute {
 	font-weight: bold;
 	background-color: #EEE !important;
 }
-.tag.heute  a{
-	color: red;
+.kalender  .tag.normal {
+	font-weight: normal;
+	background-color: #FFF !important;
 }
-.tag.event {
+.kalender  .tag.heute  a{
+	color: red;
+							 
+}
+.kalender  .tag.event {
 	font-weight:bold;
 	background-color: #EEE !important;
+}
+.kalender  .tag.event  a{
+	color: blu;
 }
 .clear {
     clear:left;
 }
 .kal_pagination {
 	text-align: center;
-    width: 140px;
-	line-height:20px;
+    width: 168px;
+	line-height:24px;
 	font-weight: bold;
 	background-color:#DDDDDD;
 }
 .kal_pagination a {
-    width:10px;
-    height:20px;
+    width:12px;
+    height:22px;
     float:left;
     color:white;
 	background-color:#DDDDDD;
@@ -57,7 +74,7 @@ body {
 .kal_pagination span a {
     display:block;
     float:left;
-    width: 100px; /*98.5*/
+    width: 120px; /*98.5*/
 	color:black;
 	background-color:#DDDDDD;
 }
