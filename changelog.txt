@@ -11,6 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 4.0.0 - [06-12-2022] - - - - - - - - - - - - - - - - - - - -
+^ Code-Anpassung php 8
+
 - - - - - 3.5.2 - [20-02-2022] - - - - - - - - - - - - - - - - - - - -
 ^ Code-Anpassung J!4 Design Kalenderansicht
 

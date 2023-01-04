@@ -220,11 +220,12 @@ for ( $a = 0; $a < count ($runden); $a++ ) {
 //		if (($runden[$a]->durchgang > 1) AND ($runden[$a]->nr > $runden[$a]->runden))
 //			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . ($runden[$a]->nr - $runden[$a]->runden) ."&amp;dg=2";
 		if (($runden[$a]->durchgang > 1) AND ($runden[$a]->nr > $runden[$a]->ligarunde)) {
-			if ($runden[$a]->nr > (3 * $runden[$a]->ligarunde)) $dg = 4;
-			elseif ($runden[$a]->nr > (2 * $runden[$a]->ligarunde)) $dg = 3;
+			$i_ligarunde = (integer) $runden[$a]->ligarunde;
+			if ($runden[$a]->nr > (3 * $i_ligarunde)) $dg = 4;
+			elseif ($runden[$a]->nr > (2 * $i_ligarunde)) $dg = 3;
 			else $dg = 2;
 			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id 
-			."&amp;runde=" . ($runden[$a]->nr - (($dg - 1) * $runden[$a]->ligarunde)) ."&amp;dg=". $dg;
+			."&amp;runde=" . ($runden[$a]->nr - (($dg - 1) * $i_ligarunde)) ."&amp;dg=". $dg;
 		} else { 
 			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . $runden[$a]->nr ."&amp;dg=1";
 		}
