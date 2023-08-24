@@ -11,6 +11,10 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 4.0.1 - [08-08-2023] - - - - - - - - - - - - - - - - - - - -
+# Umbenennen class body
+# Parametersicherung erweitert
+
 - - - - - 4.0.0 - [06-12-2022] - - - - - - - - - - - - - - - - - - - -
 ^ Code-Anpassung php 8
 

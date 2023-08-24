@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2022 CLM Team.  All rights reserved
+ * @Copyright (C) 2011-2023 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
  * @author Fjodor Schäfer
@@ -45,6 +45,7 @@ $id	= clm_core::$load->request_string( 'id','');
 $orderby	= clm_core::$load->request_string( 'orderby','');
 $ext_view	= clm_core::$load->request_string( 'ext_view','');
 $source	= clm_core::$load->request_string( 'source','');
+$nr	= clm_core::$load->request_string( 'nr','');
 
 //echo "<br>Itemid: $itemid ";
 
@@ -73,6 +74,7 @@ if ($id != '') $href_string .= '&id='.$id;
 if ($orderby != '') $href_string .= '&orderby='.$orderby; 
 if ($ext_view != '') $href_string .= '&ext_view='.$ext_view; 
 if ($source != '') $href_string .= '&source='.$source; 
+if ($nr != '') $href_string .= '&nr='.$nr; 
 //echo "<br>href: $href_string ";
 
 if ($href_string == '&view=categories')  { 
@@ -147,9 +149,9 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 						
      
 	if ($par_liste == 0) {
-		echo '<li>'; 	
+		echo '<li class="kalenderli">'; 	
 	} else {
-		echo '<tr><td>'; 	
+		echo '<tr class="kalenderli"><td>'; 	
 	}
 	
 		if ($par_datum == 1) { // Parameter prüfen: Datum

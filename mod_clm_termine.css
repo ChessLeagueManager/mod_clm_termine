@@ -1,6 +1,6 @@
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2022 CLM Team.  All rights reserved
+ * @Copyright (C) 2011-2023 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
 */
@@ -8,7 +8,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-body {
+.kalenderli {
     font-family:verdana;
     font-size:12px;
 }
