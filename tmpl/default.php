@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2023 CLM Team.  All rights reserved
+ * @Copyright (C) 2011-2025 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
  * @author Fjodor Schäfer
@@ -117,7 +117,8 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			$categoryid_link = $categoryid;
 			if ($categoryid_link == '') $categoryid_link = '0';
 			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail&amp;categoryid=".$categoryid_link; 
-		} elseif ($runden[$t]->ligarunde != 0) { 
+//		} elseif ($runden[$t]->ligarunde != 0 ) { 
+		} elseif ($runden[$t]->source == 'liga') { 
 			//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=" . $runden[$t]->durchgang;
 			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->ligarunde)) {
 				if ($runden[$t]->nr > (3 * $runden[$t]->ligarunde)) $dg = 4;
@@ -128,7 +129,7 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			} else { 
 				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=1";
 			}
-		} else {
+		} else {	// turnier
 			$linkname = "index.php?option=com_clm&amp;view=turnier_runde&amp;runde=" . $runden[$t]->nr . "&amp;turnier=" . $runden[$t]->typ_id; }
 		$linkname .= "&amp;start=". $runden[$t]->datum;             
 		// Datumsberechnungen

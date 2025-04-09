@@ -11,6 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 4.2.3 - [05-04-2025] - - - - - - - - - - - - - - - - - - - -
+^ Code-Anpassung php 8 (Ergänzung)
+
 - - - - - 4.1.0 - [29-11-2023] - - - - - - - - - - - - - - - - - - - -
 ^ Code-Anpassung Joomla 4.4.1: Aufbau der Sprachdateien
 
