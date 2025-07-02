@@ -11,6 +11,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 4.2.4 - [16-06-2025] - - - - - - - - - - - - - - - - - - - -
++ Teamwettbewerbe: Ergänzung um Termine pro Paarung
+
 - - - - - 4.2.3 - [05-04-2025] - - - - - - - - - - - - - - - - - - - -
 ^ Code-Anpassung php 8 (Ergänzung)
 

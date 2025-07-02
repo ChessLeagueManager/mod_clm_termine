@@ -117,7 +117,7 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			$categoryid_link = $categoryid;
 			if ($categoryid_link == '') $categoryid_link = '0';
 			$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$t]->id ."&amp;layout=termine_detail&amp;categoryid=".$categoryid_link; 
-//		} elseif ($runden[$t]->ligarunde != 0 ) { 
+//		} elseif ($runden[$t]->ligarunde != 0) { 
 		} elseif ($runden[$t]->source == 'liga') { 
 			//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=" . $runden[$t]->durchgang;
 			if (($runden[$t]->durchgang > 1) AND ($runden[$t]->nr > $runden[$t]->ligarunde)) {
@@ -129,7 +129,9 @@ for ($t = 0; $t < $par_anzahl; $t++) {
 			} else { 
 				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$t]->sid . "&amp;liga=" .  $runden[$t]->typ_id ."&amp;runde=" . $runden[$t]->nr ."&amp;dg=1";
 			}
-		} else {	// turnier
+		} elseif ($runden[$t]->source == 'lpaar') { 
+				$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=". $runden[$t]->sid ."&amp;liga=".  $runden[$t]->typ_id ."&amp;runde=". $runden[$t]->nr ."&amp;dg=1"; 
+		} else { // source == turnier
 			$linkname = "index.php?option=com_clm&amp;view=turnier_runde&amp;runde=" . $runden[$t]->nr . "&amp;turnier=" . $runden[$t]->typ_id; }
 		$linkname .= "&amp;start=". $runden[$t]->datum;             
 		// Datumsberechnungen
@@ -218,10 +220,7 @@ for ( $a = 0; $a < count ($runden); $a++ ) {
 	// Veranstaltung verlinken
 	if ($runden[$a]->source == 'termin') { 
  		$linkname = "index.php?option=com_clm&amp;view=termine&amp;nr=". $runden[$a]->id ."&amp;layout=termine_detail"; 
- 	} elseif ($runden[$a]->ligarunde != 0) { 
- 		//$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=". $runden[$a]->sid ."&amp;liga=".  $runden[$a]->typ_id ."&amp;runde=". $runden[$a]->nr ."&amp;dg=". $runden[$a]->durchgang; 
-//		if (($runden[$a]->durchgang > 1) AND ($runden[$a]->nr > $runden[$a]->runden))
-//			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . ($runden[$a]->nr - $runden[$a]->runden) ."&amp;dg=2";
+ 	} elseif ($runden[$a]->source == 'liga') { 
 		if (($runden[$a]->durchgang > 1) AND ($runden[$a]->nr > $runden[$a]->ligarunde)) {
 			$i_ligarunde = (integer) $runden[$a]->ligarunde;
 			if ($runden[$a]->nr > (3 * $i_ligarunde)) $dg = 4;
@@ -232,7 +231,9 @@ for ( $a = 0; $a < count ($runden); $a++ ) {
 		} else { 
 			$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . $runden[$a]->nr ."&amp;dg=1";
 		}
- 	} else {
+  	} elseif ($runden[$a]->source == 'lpaar') { 
+		$linkname = "index.php?option=com_clm&amp;view=runde&amp;saison=" . $runden[$a]->sid . "&amp;liga=" .  $runden[$a]->typ_id ."&amp;runde=" . $runden[$a]->nr ."&amp;dg=1";
+	} else {
  		$linkname = "index.php?option=com_clm&amp;view=turnier_runde&amp;runde=". $runden[$a]->nr ."&amp;turnier=". $runden[$a]->typ_id; 
 	}
 	$linkname .= "&amp;start=". $runden[$a]->datum; 

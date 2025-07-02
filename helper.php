@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Termine Modul 
- * @Copyright (C) 2008-2021 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2025 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
 */
@@ -49,6 +49,17 @@ class modCLMTermineHelper {
 				." LEFT JOIN #__clm_liga AS t ON t.id = li.liga "
 				." WHERE t.published != '0' AND  datum >= '" . $now . "' ".$addWhere_t." )"
 				." UNION ALL" 
+
+				." (SELECT 'lpaar' AS source, rm.pdate AS datum, rm.pdate AS enddatum, rm.sid, CONCAT(heim.name,' - ',gast.name) as name, rm.runde as nr, rm.lid AS typ_id, t.id, t.name AS typ, t.durchgang AS durchgang, t.published, t.runden AS ligarunde"
+				." , t.ordering, rm.ptime AS starttime "
+				." FROM #__clm_rnd_man AS rm LEFT JOIN #__clm_liga AS t ON t.id = rm.lid "
+				." LEFT JOIN #__clm_mannschaften AS heim ON heim.liga = rm.lid AND heim.tln_nr = rm.tln_nr "
+				." LEFT JOIN #__clm_mannschaften AS gast ON gast.liga = rm.lid AND gast.tln_nr = rm.gegner "
+				." WHERE t.published != '0' AND rm.pdate >= '" . $now . "' ".$addWhere_t." "
+				." AND rm.tln_nr > 0 AND rm.gegner > 0 "
+				." AND rm.pdate > '1970-01-01' AND rm.heim = 1 )"
+				
+				." UNION ALL"
 				." (SELECT 'termin', e.startdate AS datum,  e.enddate AS enddatum, '1', e.name, '1', '', e.id, e.address AS typ, '1', e.published, 'event' AS ligarunde " . " , e.ordering, starttime "
 				." FROM #__clm_termine AS e "
 				." WHERE e.published != '0' AND  e.startdate >= '" . $now . "' ".$addWhere_e." )"
