@@ -1,14 +1,18 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Component 
- * @Copyright (C) 2011-2025 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2026 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link http://www.chessleaguemanager.de
+ * @link https://chessleaguemanager.org
  * @author Fjodor Schäfer
  * @email ich@vonfio.de
 */
 defined('_JEXEC') or die('Restricted access'); 
 jimport( 'joomla.html.parameter' );
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
 
 $option	= clm_core::$load->request_string( 'option','' );
 if ($option == '') {
@@ -81,9 +85,9 @@ if ($href_string == '&view=categories')  {
 	echo "<br>href_string:".$href_string; die('hhh');
 	$href_string = ''; }
 
-	$document = JFactory::getDocument();
+	$document = Factory::getDocument();
 
-	$cssDir = JURI::base().'modules'.DS.'mod_clm_termine';
+	$cssDir = URI::base().'modules'.DS.'mod_clm_termine';
 
 	//$document->addStyleSheet( $cssDir.DS.'mod_clm_termine.css', 'text/css', null, array() );
 	$document->addStyleSheet( $cssDir.DS.'mod_clm_termine.css' );   // Joomla 4
@@ -98,13 +102,13 @@ if ($par_liste == 0 OR $par_liste == 2) {
 	}
 		
 $arrWochentag = array( 
-		"Monday" => JText::_('MOD_CLM_TERMINE_T01'), 
-		"Tuesday" => JText::_('MOD_CLM_TERMINE_T02'), 
-		"Wednesday" => JText::_('MOD_CLM_TERMINE_T03'), 
-		"Thursday" => JText::_('MOD_CLM_TERMINE_T04'), 
-		"Friday" => JText::_('MOD_CLM_TERMINE_T05'), 
-		"Saturday" => JText::_('MOD_CLM_TERMINE_T06'), 
-		"Sunday" => JText::_('MOD_CLM_TERMINE_T07') );
+		"Monday" => Text::_('MOD_CLM_TERMINE_T01'), 
+		"Tuesday" => Text::_('MOD_CLM_TERMINE_T02'), 
+		"Wednesday" => Text::_('MOD_CLM_TERMINE_T03'), 
+		"Thursday" => Text::_('MOD_CLM_TERMINE_T04'), 
+		"Friday" => Text::_('MOD_CLM_TERMINE_T05'), 
+		"Saturday" => Text::_('MOD_CLM_TERMINE_T06'), 
+		"Sunday" => Text::_('MOD_CLM_TERMINE_T07') );
 $count = 0; 
 if ($start == '' OR $start == '1') $start = date("Y-m-d");
 
@@ -264,29 +268,29 @@ if ($start != '' AND $start != '1') {
 }
 
 $arrMonth = array(
-    "January" => JText::_('MOD_CLM_TERMINE_M01'),
-    "February" => JText::_('MOD_CLM_TERMINE_M02'),
-    "March" => JText::_('MOD_CLM_TERMINE_M03'),
-    "April" => JText::_('MOD_CLM_TERMINE_M04'),
-    "May" => JText::_('MOD_CLM_TERMINE_M05'),
-    "June" => JText::_('MOD_CLM_TERMINE_M06'),
-    "July" => JText::_('MOD_CLM_TERMINE_M07'),
-    "August" => JText::_('MOD_CLM_TERMINE_M08'),
-    "September" => JText::_('MOD_CLM_TERMINE_M09'),
-    "October" => JText::_('MOD_CLM_TERMINE_M10'),
-    "November" => JText::_('MOD_CLM_TERMINE_M11'),
-    "December" => JText::_('MOD_CLM_TERMINE_M12')
+    "January" => Text::_('MOD_CLM_TERMINE_M01'),
+    "February" => Text::_('MOD_CLM_TERMINE_M02'),
+    "March" => Text::_('MOD_CLM_TERMINE_M03'),
+    "April" => Text::_('MOD_CLM_TERMINE_M04'),
+    "May" => Text::_('MOD_CLM_TERMINE_M05'),
+    "June" => Text::_('MOD_CLM_TERMINE_M06'),
+    "July" => Text::_('MOD_CLM_TERMINE_M07'),
+    "August" => Text::_('MOD_CLM_TERMINE_M08'),
+    "September" => Text::_('MOD_CLM_TERMINE_M09'),
+    "October" => Text::_('MOD_CLM_TERMINE_M10'),
+    "November" => Text::_('MOD_CLM_TERMINE_M11'),
+    "December" => Text::_('MOD_CLM_TERMINE_M12')
 );
     
 //$headline = array('Mo','Di','Mi','Do','Fr','Sa','So');
 $headline = array( 
-		JText::_('MOD_CLM_TERMINE_K01'), 
-		JText::_('MOD_CLM_TERMINE_K02'), 
-		JText::_('MOD_CLM_TERMINE_K03'), 
-		JText::_('MOD_CLM_TERMINE_K04'), 
-		JText::_('MOD_CLM_TERMINE_K05'), 
-		JText::_('MOD_CLM_TERMINE_K06'), 
-		JText::_('MOD_CLM_TERMINE_K07') );
+		Text::_('MOD_CLM_TERMINE_K01'), 
+		Text::_('MOD_CLM_TERMINE_K02'), 
+		Text::_('MOD_CLM_TERMINE_K03'), 
+		Text::_('MOD_CLM_TERMINE_K04'), 
+		Text::_('MOD_CLM_TERMINE_K05'), 
+		Text::_('MOD_CLM_TERMINE_K06'), 
+		Text::_('MOD_CLM_TERMINE_K07') );
 
 $linkname_tl = "index.php?option=com_clm&amp;view=termine&amp;Itemid=1"; 
 $htext = $arrMonth[date('F',$date)].' '.date('y',$date);

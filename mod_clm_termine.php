@@ -1,12 +1,15 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Termine Modul 
- * @Copyright (C) 2008-2022 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2026 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link http://www.chessleaguemanager.de
+ * @link https://chessleaguemanager.org
 */
  // no direct access
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Helper\ModuleHelper;
+
 if(!defined("DS")){define('DS', DIRECTORY_SEPARATOR);} // fix for Joomla 3.2
 require_once (JPATH_SITE . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_clm" . DIRECTORY_SEPARATOR . "clm" . DIRECTORY_SEPARATOR . "index.php");
 
@@ -25,4 +28,4 @@ $par_termin_link 	= $params->def('terminlink', 1);
 
 $runden	= modCLMTermineHelper::getRunde($params);
 
-require(JModuleHelper::getLayoutPath('mod_clm_termine'));
+require(ModuleHelper::getLayoutPath('mod_clm_termine'));

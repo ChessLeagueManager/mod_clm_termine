@@ -1,19 +1,21 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Termine Modul 
- * @Copyright (C) 2008-2025 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2026 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link http://www.chessleaguemanager.de
+ * @link https://chessleaguemanager.org
 */
 // no direct access
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Factory;
+
 class modCLMTermineHelper {
   public static function getRunde(&$params) {
 	global $mainframe;
-	$db = JFactory::getDBO();
+	$db = Factory::getDBO();
 	$par_liste = $params->def('liste', 0);
 	$param['categoryid'] = $params->def('categoryid', 0);
-//	JRequest::setVar( 'categoryid',$param['categoryid']);
 	$_GET['categoryid'] = $param['categoryid'];
 	if ($par_liste == 0) {
 		$now = date("Y-m-d");
@@ -145,7 +147,7 @@ class modCLMTermineHelper {
 	public static function getTree() {  //das ist eine Kopie von modCLM_TurnierHelper::getTree()
 	
 		// DB
-		$_db				=  JFactory::getDBO();
+		$_db				=  Factory::getDBO();
 	
 		// alle Cats holen
 		$query = "SELECT id, name, parentid FROM #__clm_categories";
